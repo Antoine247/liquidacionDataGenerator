@@ -4,4 +4,3 @@
 
 
 desal/DS
-(clay/make! {:source-path "src/antoine247/db/desal.clj"})

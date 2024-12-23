@@ -1,0 +1,20 @@
+
+  {:desal {:connection-timeout 30000
+           :validation-timeout 5000
+           :idle-timeout       600000
+           :max-lifetime       1800000
+           :minimum-idle       10
+           :maximum-pool-size  10
+           :dbtype            "postgresql"
+           :username           "desal"
+           :password           "desal2016"
+           :dbname             "desal"
+           :host               "10.200.0.190"
+           :port               5432}
+   :maestros {:dbtype "relativity"
+              :dbname "Maestrossc9"
+              :classname "relativity.jdbc.Driver"
+              :user "ADMIN"
+              :password ""
+              :host "10.200.0.30"
+              :port 1583}}

@@ -1,10 +1,17 @@
 (ns antoine247.db.desal
   (:require
-   [antoine247.conn :as conn]
+   [antoine247.db.conn :refer [db-spec]]
    [hugsql.core :as hugsql]
    [tablecloth.api :as tc]
-   [tech.v3.datatype.functional :as dfn]))
-(declare todos-convenios)
-(hugsql/def-db-fns "antoine247/db/sql/desal.sql")
-(def DS (tc/dataset (todos-convenios (conn/dbspec :desal))))
+   [tech.v3.datatype.functional :as dfn]
+   [next.jdbc :as jdbc] 
+   [honey.sql :as sql]))
+
+(defn run-query-desal
+  []
+(with-open [conn @db-spec]
+  (jdbc/execute! conn (sql/format {:select [:*], :from [:fichaaneste_val]}))))
+(def DS (tc/dataset (run-query-desal)))
 DS
+
+
