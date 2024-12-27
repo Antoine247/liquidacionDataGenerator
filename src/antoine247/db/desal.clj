@@ -1,17 +1,22 @@
 (ns antoine247.db.desal
   (:require
-   [antoine247.db.conn :refer [db-spec]]
-   [hugsql.core :as hugsql]
-   [tablecloth.api :as tc]
-   [tech.v3.datatype.functional :as dfn]
+   [antoine247.db.conn :refer [db-spec]] 
    [next.jdbc :as jdbc] 
-   [honey.sql :as sql]))
+   [honey.sql :as sql]
+   [java-time.api :as jt]))
 
-(defn run-query-desal
-  []
-(with-open [conn @db-spec]
-  (jdbc/execute! conn (sql/format {:select [:*], :from [:fichaaneste_val]}))))
-(def DS (tc/dataset (run-query-desal)))
-DS
+(defn run-query
+  [honeyquery]
+(with-open [conn (.getConnection @db-spec)]
+  (jdbc/execute! conn (sql/format honeyquery))))
 
+(defn convenios
+  "query para buscar en tbl_conv_prof"
+  [fechadesde]
+  (run-query {:select [:*],
+              :from [:tbl_conv_prof]
+              :where [:>= :conv_fecha_desde fechadesde]}))
+
+(comment
+   (convenios (jt/local-date 2024 11 01)))
 

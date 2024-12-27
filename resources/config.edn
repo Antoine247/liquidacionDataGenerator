@@ -9,7 +9,7 @@
            :username           "desal"
            :password           "desal2016"
            :dbname             "desal"
-           :host               "10.200.0.190"
+           :host               "10.200.0.90"
            :port               5432}
    :maestros {:dbtype "relativity"
               :dbname "Maestrossc9"

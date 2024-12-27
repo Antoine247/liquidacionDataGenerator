@@ -3,4 +3,4 @@
             [antoine247.db.desal :as desal]))
 
 
-desal/DS
+(clay/make! {:source-path "src/antoine247/db/desal.clj"})
