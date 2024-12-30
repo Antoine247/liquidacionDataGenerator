@@ -26,3 +26,10 @@
 /checkouts
 /classes
 /target
+/node_modules
+/public/js
+.shadow-cljs
+.nrepl-port
+yarn.lock
+package-lock.json
+.DS_Store
